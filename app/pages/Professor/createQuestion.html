@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="papercraft">
+    <head>
+        <title>PaperCraft-Home</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+        <link rel="stylesheet" type="text/css" href="/PaperCraft/bower_components/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="/PaperCraft/bower_components/bootstrap/dist/css/bootstrap-theme.css">
+        <link rel="stylesheet" type="text/css" href="/PaperCraft/bower_components/bootstrap-social/bootstrap-social.css">
+        <link rel="stylesheet" type="text/css" href="/PaperCraft/bower_components/font-awesome/css/font-awesome.css">
+        <link rel="stylesheet" href="/PaperCraft/bower_components/metisMenu/dist/metisMenu.min.css">
+        <link rel="stylesheet" type="text/css" href="/PaperCraft/styles/papercraft_style.css">
+        <link rel="stylesheet" type="text/css" href="/PaperCraft/bower_components/summernote/dist/summernote.css">
+	
+        <script src="/PaperCraft/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/PaperCraft/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/PaperCraft/bower_components/angular/angular.js"></script>
+        <script src="/PaperCraft/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+        <script src="/PaperCraft/bower_components/summernote/dist/summernote.js"></script>
+        <script src="/PaperCraft/bower_components/angular-summernote/dist/angular-summernote.js"></script>
+        <script src="/PaperCraft/bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <script src="/PaperCraft/scripts/papercraft_script.js"></script>
+        <script src="/PaperCraft/scripts/Controller.js"></script>
+        <script src="/PaperCraft/scripts/services.js"></script>
+	
+    </head>
+    <body>
+        <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">PaperCraft</a>
+            </div>
+            <!-- /.navbar-header -->
+            
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> Hello User <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+            </ul>
+            
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search" style="color: #627AAD"></i>
+                                </button>
+                            </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-graduation-cap fa-fw"></i> Students<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dash Board</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-user-secret fa-fw"></i> Professor<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="pages/professor_dashboard.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Administrator<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="pages/admin_dashboard.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper" ng-controller="QuestionBankController">
+             
+            <div id="mcqQuestionModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" onclick="modalClose()" data-dismiss="modal">&times;</button>
+                            <h3>MCQ question</h3>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" name="mcqQuestionForm" ng-submit="sendMCQQuestion()" novalidate>
+                                <div class="form-group">
+                                    <label for="question" class="col-xs-1 control-label">Question:</label>
+                                    <div class="col-xs-12">
+                                        <summernote ng-model="questionBank.question" height="200" required></summernote>
+                                    </div>   
+                                </div>
+                                
+                                <div class="form-group" id="mcq-options">
+                                    <div class="col-xs-12 mcqOptionDiv">
+                                        <div class="mcqOptionNode" ng-repeat="mcqOption in questionBank.mcqOptions">
+                                            <label><input type="radio" class="optionRadio" name="radioOption_1" ng-model="$parent.optionValue" ng-value="{{$index + 1}}" required>&nbsp;<input type="text" class="optionText" name="mcqOption_1" ng-model="mcqOption.option" required></label><br>
+                                            <span ng-show="mcqQuestionForm.mcqOption_{{$index + 1}}.$error.required && !mcqQuestionForm.mcqOption_{{$index + 1}}.$pristine" class="help-block">Option required Required</span>
+                                        </div>
+                                        <button type="button" class="btn btn-default addMCQOptionButton" ng-click="addMCQOption()">...add Option</button>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="questionCourseMCQHidden" name="questionCourse" value="{{questionBank.questionCourse}}">
+                                <input type="hidden" id="questionProgrammeMCQHidden" name="questionProgramme" value="{{questionBank.questionProgramme}}">
+                                <input type="hidden" id="questionStandardMCQHidden" name="questionStandard" value="{{questionBank.questionStandard}}">
+                                <input type="hidden" id="questionTypeMCQHidden" name="questionType" value="{{questionBank.questionType}}">
+                                <input type="hidden" id="mcqOptionNumHidden" name="mcqOptionNum" value="{{questionBank.optionNum}}">
+                                <div class="form-group">
+                                    <div class="col-xs-6 col-md-4">
+                                        <button type="submit" class="btn btn-primary" ng-disabled="mcqQuestionForm.$invalid">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="numericalQuestionModal" class="modal fade myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" onclick="modalClose()">&times;</button>
+                            <h3>Numerical question</h3>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" name="numericalQuestionForm" ng-submit="sendNumericalQuestion()">
+                                <div class="form-group">
+                                    <label for="question" class="col-xs-1 control-label">Question:</label>
+                                    <div class="col-xs-12">
+                                        <summernote ng-model="questionBank.question" height="200" required></summernote>
+                                    </div>
+                                </div>
+                                <div class="form-group numericalAnswerNode">
+                                    <label for="numericalQanswer" class="col-xs-12 col-sm-3 control-label">Answer:</label>
+                                    <div class="col-xs-12 col-sm-5"><input type="text" class="form-control" id="numericalQanswer" name="qanswer" ng-model="questionBank.qAnswer" required></div>
+                                </div>
+                                <input type="hidden" id="questionCourseNumericalHidden" name="questionCourse" value="{{questionBank.questionCourse}}">
+                                <input type="hidden" id="questionProgrammeNumericalHidden" name="questionProgramme" value="{{questionBank.questionProgramme}}">
+                                <input type="hidden" id="questionStandardNumericalHidden" name="questionStandard" value="{{questionBank.questionStandard}}">
+                                <input type="hidden" id="questionTypeNumericalHidden" name="questionType" value="{{questionBank.questionType}}">
+                                <div class="form-group">
+                                    <div class="col-xs-6 col-md-4">
+                                        <button type="submit" class="btn btn-primary" ng-disabled="numericalQuestionForm.$invalid">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="trueFalseQuestionModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" onclick="modalClose()" data-dismiss="modal">&times;</button>
+                            <h3>True/False question</h3>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" name="trueFalseQuestionForm" ng-submit="sendTrueFalseAnswerQuestion()" novalidate>
+                                <div class="form-group">
+                                    <label for="question" class="col-xs-1 control-label">Question:</label>
+                                    <div class="col-xs-12">
+                                        <summernote ng-model="questionBank.question" height="200" required></summernote>
+                                    </div>
+                                </div>
+                                <div class="form-group trueFalseAnswerNode">
+                                    <div class="col-xs-12 mcqOptionDiv">
+                                        <div class="trueFalseOptionNode"><label><input type="radio" name="trueFalseAnswer" ng-model="questionBank.trueFalseAnswer" value="true">True</label><br></div>
+                                        <div class="trueFalseOptionNode"><label><input type="radio" name="trueFalseAnswer" ng-model="questionBank.trueFalseAnswer" value="false">False</label><br></div>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="questionCourseTrueFalseHidden" name="questionCourse" value="{{questionBank.questionCourse}}">
+                                <input type="hidden" id="questionProgrammeTrueFalseHidden" name="questionProgramme" value="{{questionBank.questionProgramme}}">
+                                <input type="hidden" id="questionStandardTrueFalseHidden" name="questionStandard" value="{{questionBank.questionStandard}}">
+                                <input type="hidden" id="questionTypeTrueFalseHidden" name="questionType" value="{{questionBank.questionType}}">
+                                <div class="form-group">
+                                    <div class="col-xs-6 col-md-4">
+                                        <button type="submit" class="btn btn-primary" ng-disabled="trueFalseQuestionForm.$invalid">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="longAnswerQuestionModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" onclick="modalClose()" data-dismiss="modal">&times;</button>
+                            <h3>Long Answer Type question</h3>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" name="longAnswerQuestionForm" ng-submit="sendLongAnswerQuestion()" novalidate>
+                                <div class="form-group">
+                                    <label for="question" class="col-xs-1 control-label">Question:</label>
+                                    <div class="col-xs-12">
+                                        <summernote ng-model="questionBank.question" height="200" required></summernote>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="questionCourseLongAnswerHidden" name="questionCourse" value="{{questionBank.questionCourse}}">
+                                <input type="hidden" id="questionProgrammeLongAnswerHidden" name="questionProgramme" value="{{questionBank.questionProgramme}}">
+                                <input type="hidden" id="questionStandardLongAnswerHidden" name="questionStandard" value="{{questionBank.questionStandard}}">
+                                <input type="hidden" id="questionTypeLongAnswerHidden" name="questionType" value="{{questionBank.questionType}}">
+                                <div class="form-group">
+                                    <div class="col-xs-6 col-md-4">
+                                        <button type="submit" class="btn btn-primary" ng-disabled="longAnswerQuestionForm.$invalid">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="fillingBlanksQuestionModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" onclick="modalClose()" data-dismiss="modal">&times;</button>
+                            <h3>Fill in the blanks Type question</h3>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" name="fillingBlankQuestionForm" ng-submit="sendFillingBlankQuestion()">
+                                <div class="form-group">
+                                    <label for="question" class="col-xs-1 control-label">Question:</label>
+                                    <div class="col-xs-12">
+                                        <summernote ng-model="questionBank.question" height="200" required></summernote>
+                                        <span ng-show="!fillingBlankQuestionForm.$pristine && !isDashPresentFillingBlank" class="help-block" style="color: red;">Please Enter the Dashes in Question</span>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-repeat="blank in questionBank.fillingBlank">
+                                    <div class="col-xs-5"><input type="text" class="form-control" ng-model="blank.fillingBlankAnswer" placeholder="Enter the blank answer.." required></div><div class="col-xs-4 col-xs-offset-2"><input type="number" class="form-control" ng-model="blank.fillingBlankAnswerOrder" placeholder="Enter order..." required></div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-xs-6 col-sm-4">
+                                        <button type="button" class="btn btn-default" ng-disabled="isBlankAdded" ng-click="addBlank()" >Add Blanks</button>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="questionCourseFillingBlanksHidden" name="questionCourse" value="{{questionBank.questionCourse}}">
+                                <input type="hidden" id="questionProgrammeFillingBlanksHidden" name="questionProgramme" value="{{questionBank.questionProgramme}}">
+                                <input type="hidden" id="questionStandardFillingBlanksHidden" name="questionStandard" value="{{questionBank.questionStandard}}">
+                                <input type="hidden" id="questionTypeFillingBlanksHidden" name="questionType" value="{{questionBank.questionType}}">
+                                <div class="form-group" ng-show="!fillingBlankQuestionForm.$pristine && !flagWhetherOrdersAreAdjascent">
+                                    <div class="col-xs-6 col-xs-offset-3">
+                                        <span class="help-block" style="color: red;">Input the orders properly</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-xs-6 col-sm-4">
+                                        <button type="submit" class="btn btn-primary" ng-disabled="fillingBlankQuestionForm.$invalid || !isBlankAdded">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="multipleAnswersQuestionModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" onclick="modalClose()" data-dismiss="modal">&times;</button>
+                            <h3>Multiple Answers question</h3>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" id="multiAnswerQuestionForm" name="multipleAnswerQuestionForm" ng-submit="sendMultipleAnswerQuestion()" novalidate>
+                                <div class="form-group">
+                                    <label for="question" class="col-xs-1 control-label">Question:</label>
+                                    <div class="col-xs-12">
+                                        <summernote ng-model="questionBank.question" height="200" required></summernote>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="multiAnswer-options">
+                                    <div class="col-xs-12 multiAnswerOptionDiv">
+                                        <div class="multiAnswerOptionNode" ng-repeat="multiAnswerOption in questionBank.multipleAnswerOptions">
+                                            <label><input type="checkbox" class="multiAnswerCheckBox" name="checkBoxOption_{{$index}}" ng-model="$parent.questionBank.multipleAnswerOptions[$index].isCorrectAnswer">&nbsp;<input type="text" class="optionText" name="multiAnswerOption_{{$index}}" ng-model="multiAnswerOption.option" required></label><br>
+                                        </div>
+                                        <button type="button" class="btn btn-default addMultiAnswerOptionButton" ng-click="addMultiAnswerOption()">...add Option</button>
+                                    </div>
+                                    
+                                </div>
+                                <input type="hidden" id="questionCourseMultipleAnswersHidden" name="questionCourse" value="{{questionBank.questionCourse}}">
+                                <input type="hidden" id="questionProgrammeMultipleAnswersHidden" name="questionProgramme" value="{{questionBank.questionProgramme}}">
+                                <input type="hidden" id="questionStandardMultipleAnswersHidden" name="questionStandard" value="{{questionBank.questionStandard}}">
+                                <input type="hidden" id="questionTypeMultipleAnswersHidden" name="questionType" value="{{questionBank.questionType}}">
+                                <div class="form-group">
+                                    <div class="col-xs-6 col-md-4">
+                                        <button type="submit" class="btn btn-primary" ng-disabled="multipleAnswerQuestionForm.$invalid">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Incomplete Matching Options: Complete After AngularJS -->
+            <div id="matchingOptionsQuestionModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" onclick="modalClose()" data-dismiss="modal">&times;</button>
+                            <h3>Matching The Options</h3>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" name="matchingOptionQuestionForm" ng-submit="sendMatchingOptionQuestion()" novalidate>
+                                <!--<div class="form-group">
+                                    <div class="col-xs-6">Column A</div>
+                                    <div class="col-xs-6">Column B</div>
+                                </div>-->
+                                <div class="form-group matchingOptionNode" ng-repeat="addedMatchOption in addedMatchOptions">
+                                    <div class="col-xs-5">
+                                        <input type="text" class="form-control" name="matchingOption" ng-model="addedMatchOption.option" ng-disabled="hasMatchingStarted" required>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <select class="form-control" name="inList" ng-model="addedMatchOption.inList" ng-options="inListMatchOption for inListMatchOption in inListForMatchOptions" ng-change="inListDropdownChanged()" ng-disabled="hasMatchingStarted" required>
+                                            <option value="">Option List</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group" ng-show="optionNotInA">
+                                    <span class="col-xs-12 col-sm-5 help-block" style="color: red">Keep atleast an option in list A</span>
+                                </div>
+                                
+                                <div class="form-group" ng-show="optionNotInB">
+                                    <span class="col-xs-12 col-sm-5 help-block" style="color: red">Keep atleast an option in list B</span>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <div class="col-xs-6 col-sm-4">
+                                        <button type="button" class="btn btn-default" ng-click="addMatchingOption()" ng-disabled="matchingOptionQuestionForm.matchingOption.$error.required || matchingOptionQuestionForm.inList.$error.required || hasMatchingStarted">Add Option</button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-xs-6 col-sm-4">
+                                        <button type="button" class="btn btn-default" ng-click="startMatching()" ng-disabled="matchingOptionQuestionForm.matchingOption.$error.required || matchingOptionQuestionForm.inList.$error.required || hasMatchingStarted">Start Matching</button>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="form-group" ng-show="hasMatchingStarted">
+                                    <div class="col-xs-6">Column A</div>
+                                    <div class="col-xs-6">Column B</div>
+                                </div>
+                                <div class="form-group" ng-repeat="matchOption in questionBank.matchOptions">
+                                    <div class="col-xs-6">
+                                        {{matchOption.option}}
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <select class="form-control" name="correctMatch" ng-options="optionInB for optionInB in optionInListB" ng-model="matchOption.correctMatch" required>
+                                            <option value="">Select match</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                
+                                <input type="hidden" id="questionCourseFillingBlanksHidden" name="questionCourse" value="{{questionBank.questionCourse}}">
+                                <input type="hidden" id="questionProgrammeFillingBlanksHidden" name="questionProgramme" value="{{questionBank.questionProgramme}}">
+                                <input type="hidden" id="questionStandardFillingBlanksHidden" name="questionStandard" value="{{questionBank.questionStandard}}">
+                                <input type="hidden" id="questionTypeFillingBlanksHidden" name="questionType" value="{{questionBank.questionType}}">
+                                <div class="form-group">
+                                    <div class="col-xs-6 col-sm-4">
+                                        <button type="submit" class="btn btn-primary" ng-disabled="matchingOptionQuestionForm.matchingOption.$error.required || matchingOptionQuestionForm.inList.$error.required || matchingOptionQuestionForm.correctMatch.$error.required || !hasMatchingStarted">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            <p style="padding: 40px auto"></p>
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label for="qst_course" class="col-xs-12 col-sm-2 control-label">Question Course:</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <select class="form-control" id="qst_course" name="questionCourse" ng-model="questionBank.questionCourse" ng-change="courseDropdownChanged()" ng-options="course.idCourseList as course.courseName for course in courseListInCreateQuestion">
+                            <option value="">Select Course?</option>
+                        </select>
+                        <span ng-show="isQuestionCourseDropdownEmpty" class="help-block" style="color : red">Question Course Required</span>
+                    </div>
+                    <label for="qst_programme" class="col-xs-12 col-sm-3 col-sm-offset-1 control-label">Question Programme:</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <select class="form-control" id="qst_programme" name="questionProgramme" ng-model="questionBank.questionProgramme" ng-change="programmeDropdownChanged()" ng-options="programme.idProgrammeList as programme.programmeName for programme in programmeListInCreateQuestion">
+                            <option value="">Select Programme ?</option>
+                        </select>
+                        <span ng-show="isQuestionProgrammeDropdownEmpty" class="help-block" style="color : red">Question Programme Required</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="qst_standard" class="col-xs-12 col-sm-2 control-label">Standard:</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <select class="form-control" id="qst_standard" name="questionStandard" ng-model="questionBank.questionStandard" ng-change="standardDropdownChanged()" ng-options="standard.idStandardList as standard.standardName for standard in standardsListInCreateQuestion">
+                            <option value="">Select Standard ?</option>
+                        </select>
+                        <span ng-show="isQuestionStandardDropdownEmpty" class="help-block" style="color : red">Question Standard Required</span>
+                    </div>
+                    <label for="qst_type" class="col-xs-12 col-sm-2 col-sm-offset-2 control-label">Question Type:</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <select class="form-control" id="qst_type" ng-model="questionBank.questionType" ng-change="typeDropdownChanged()">
+                            <option value="">Select Type?</option>
+                            <option value="mcq">MCQ</option>
+                            <option value="numerical">Numerical</option>
+                            <option value="truefalse">True/False</option>
+                            <option value="longanswer">Long Answer</option>
+                            <option value="fillingblanks">Filling The Blanks</option>
+                            <option value="matching">Matching The Options</option>
+                            <option value="multipleanswers">Multiple Answers Type Questions</option>
+                        </select>
+                        <span ng-show="isQuestionTypeDropdownEmpty" class="help-block" style="color : red">Question Type Required</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="qst_minMarks" class="col-xs-12 col-sm-2 control-label">Minimum Marks:</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" id="qst_minMarks" class="form-control" ng-model="questionBank.minMarks" ng-change="minMarksInputChanged()" placeholder="Enter the minimum marks..">
+                        <span ng-show="isQuestionMinMarksInputEmpty" class="help-block" style="color : red">Question Minimum Marks Required</span>
+                    </div>
+                    <label for="qst_maxMarks" class="col-xs-12 col-sm-2 col-sm-offset-2 control-label">Maximum Marks:</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" id="qst_maxMarks" class="form-control" ng-model="questionBank.maxMarks" ng-change="maxMarksInputChanged()" placeholder="Enter the maximum marks..">
+                        <span ng-show="isQuestionMaxMarksInputEmpty" class="help-block" style="color : red">Question Maximum Marks Required</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-6 col-sm-4 col-sm-offset-4">
+                        <button type="button" class="btn btn-default" data-toggle="modal" ng-click="openQuestionModal()">Add your question</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    </body>
+</html>

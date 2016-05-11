@@ -1,0 +1,49 @@
+
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12">    
+                        <h1>Programmes</h1>
+                    </div>
+                </div>
+                <hr>
+                <form class="form-horizontal" name="programmeListForm" ng-submit="sendProgramme()" novalidate>
+                    <div class="form-group">
+                        <label for="programmeName" class="control-label col-xs-12 col-sm-4">Programme Name:</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <input type="text" class="form-control" id="programmeName" ng-model="programme.programmeName" ng-change="checkProgrammeNamePresent()" placeholder="Enter programme name..." required>
+                            <span ng-show="isProgrammePresent" class="help-block" style="color: red;">Programme name already present</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="programmeDescription" class="control-label col-xs-12 col-sm-4">Programme Description:</label>
+                        <div class="col-xs-12 col-sm-8"><textarea class="form-control" id="programmeDescription" ng-model="programme.programmeDescription" rows="6" required></textarea></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-8 col-sm-push-4">
+                            <input type="checkbox" ng-model="programme.isProgrammeDeleted"> Is programme deleted?
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-4 col-sm-push-4">
+                            <button type="submit" class="btn btn-primary" ng-disabled="programmeListForm.$invalid || isProgrammePresent">Submit</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="panel-group" id="accordion" role="tablist">
+                    <div class="panel panel-default" ng-repeat="programmeJSON in programmesList">
+                        <div class="panel-heading" role="tab">
+                            <h3 class="panel-title">
+                                <a href="#{{programmeJSON.idProgrammeList}}" role="button" data-toggle="collapse" data-parent="#accordion">{{programmeJSON.programmeName}}&nbsp;<span ng-show="programmeJSON.isProgrammeDeleted"><small>(Deleted)</small></span></a>
+                            </h3>
+                        </div>
+                        <div class="panel-collapse collapse" id="{{programmeJSON.idProgrammeList}}" role="tabpanel">
+                            <div class="panel-body">
+                                <p>{{programmeJSON.programmeDescription}}</p>
+                            </div>
+                        </div>
+                    </div>       
+                </div>
+            </div>
+        </div>
+        <!-- /#page-wrapper -->

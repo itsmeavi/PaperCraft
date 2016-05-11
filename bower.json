@@ -1,0 +1,21 @@
+{
+  "name": "PaperCraft",
+  "version": "1.0.0",
+  "main": "path/to/main.css",
+  "ignore": [
+    ".jshintrc",
+    "**/*.txt"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "angular": "~1.5.0",
+    "bootstrap": "~3.3.6",
+    "bootstrap-social": "~4.12.0",
+    "metisMenu": "^2.4.3",
+    "summernote": "^0.8.1",
+    "angular-summernote": "^0.8.1",
+    "angular-sanitize": "^1.5.5",
+    "angular-route": "^1.5.5",
+    "angular-ui-router": "ui-router#^0.2.18"
+  }
+}

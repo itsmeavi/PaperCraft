@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="papercraft">
+    <head>
+        <title>PaperCraft-Home</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+        <link rel="stylesheet" type="text/css" href="/PaperCraft/bower_components/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="/PaperCraft/bower_components/bootstrap/dist/css/bootstrap-theme.css">
+        <link rel="stylesheet" type="text/css" href="/PaperCraft/bower_components/bootstrap-social/bootstrap-social.css">
+        <link rel="stylesheet" type="text/css" href="/PaperCraft/bower_components/font-awesome/css/font-awesome.css">
+        <link rel="stylesheet" href="/PaperCraft/bower_components/metisMenu/dist/metisMenu.min.css">
+        <link rel="stylesheet" type="text/css" href="/PaperCraft/styles/papercraft_style.css">
+        <link rel="stylesheet" type="text/css" href="/PaperCraft/bower_components/summernote/dist/summernote.css">
+	
+        <script src="/PaperCraft/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/PaperCraft/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/PaperCraft/bower_components/angular/angular.js"></script>
+        <script src="/PaperCraft/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+        <script src="/PaperCraft/bower_components/summernote/dist/summernote.js"></script>
+        <script src="/PaperCraft/bower_components/angular-summernote/dist/angular-summernote.js"></script>
+        <script src="/PaperCraft/bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <script src="/PaperCraft/scripts/papercraft_script.js"></script>
+        <script src="/PaperCraft/scripts/Controller.js"></script>
+        <script src="/PaperCraft/scripts/services.js"></script>
+	
+    </head>
+    <body>
+        <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">PaperCraft</a>
+            </div>
+            <!-- /.navbar-header -->
+            
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> Hello Mukul Roy <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+            </ul>
+            
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search" style="color: #627AAD"></i>
+                                </button>
+                            </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-graduation-cap fa-fw"></i> Students<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dash Board</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-user-secret fa-fw"></i> Professor<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="pages/professor_dashboard.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Administrator<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="pages/admin_dashboard.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper" ng-controller="QuestionBankViewController">
+            
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2>View your Questions</h2>
+                    </div>
+                    <div class="col-xs-12">
+                        <hr>
+                    </div>
+                    <div class="col-xs-12 col-md-8">
+                        <ul class="media-list">
+                            <li class="media" ng-repeat="question in listOfQuestionsForView">
+                                <a href="#">
+                                    <div class="media-body">
+                                        <h3 class="media-heading questionView" ng-bind-html="question.question"></h3>
+                                        <p>
+                                            <span class="badge questionViewBadge">{{question.questionCourse}}</span>
+                                            <span class="badge questionViewBadge">{{question.questionStandard}}</span>
+                                            <span class="badge questionViewBadge">{{question.questionProgramme}}</span>
+                                            <span class="badge questionViewBadge">{{question.questionType}}</span>
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    
+    </body>
+</html>

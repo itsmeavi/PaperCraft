@@ -1,0 +1,3 @@
+Active navbar background link : #0069CC;
+Active background font-color : #B3DAFF;
+Navbar background : #0083FF;

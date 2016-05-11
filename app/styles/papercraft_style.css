@@ -1,0 +1,354 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 15 Mar, 2016, 7:52:18 PM
+    Author     : avijeet
+*/
+
+body {
+    font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+}
+
+h1 {
+	font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
+	font-size: 24px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+}
+h3 {
+	font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 100;
+	line-height: 15.4px;
+}
+p {
+	font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 20px;
+}
+label {
+        font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
+	font-size: 15px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 20px;
+        padding-top: 10px;
+}
+blockquote {
+	font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
+	font-size: 21px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 30px;
+}
+pre {
+	font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
+	font-size: 13px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 18.5714px;
+}
+
+
+/** page custom stylings **/
+#wrapper {
+    width: 100%;
+}
+
+#page-wrapper {
+    padding: 0 15px;
+    min-height: 568px;
+    background-color: #fff;
+}
+
+@media(min-width:768px) {
+    #page-wrapper {
+        position: inherit;
+        margin: 0 0 0 250px;
+        padding: 0 30px;
+        border-left: 1px solid #e7e7e7;
+    }
+}
+
+nav.navbar {
+    background: #3B5998;
+}
+nav.navbar .navbar-brand {
+    color : #000000;
+}
+
+nav.navbar .navbar-header a:hover {
+    color : #000000;
+}
+
+.navbar > .navbar-header {
+    background: #3B5998;
+}
+
+nav > .navbar-header > .navbar-toggle:hover {
+    background-color: #3B5998;
+}
+
+nav > .navbar-header > .navbar-toggle:enabled{
+    background-color: #3B5998;
+}
+
+.sidebar {
+    padding-right: 0;
+    padding-left: 0;
+    background: #EDEFF4;
+}
+
+.navbar-default .sidebar-nav a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.navbar-top-links {
+    margin-right: 0;
+}
+
+.navbar-top-links li {
+    display: inline-block;
+}
+
+.navbar-top-links li:last-child {
+    margin-right: 15px;
+}
+
+.navbar-top-links li a {
+    padding: 15px;
+    min-height: 50px;
+    color: #ffffff;
+}
+
+.navbar-top-links > .dropdown > .dropdown-toggle:enabled {
+    background: #3B5998;
+}
+
+.navbar-top-links > .dropdown > .dropdown-toggle:hover {
+    background: #627AAD;
+}
+
+.navbar-top-links > .dropdown > .dropdown-toggle:active {
+    background: #627AAD;
+}
+
+.navbar-top-links .dropdown-menu li {
+    display: block;
+    background: white;
+}
+
+.navbar-top-links .dropdown-menu li:last-child {
+    margin-right: 0;
+}
+
+.navbar-top-links .dropdown-menu li a {
+    padding: 3px 20px;
+    min-height: 0;
+    color: black;
+}
+
+
+
+.navbar-top-links .dropdown-messages,
+.navbar-top-links .dropdown-tasks,
+.navbar-top-links .dropdown-alerts {
+    width: 310px;
+    min-width: 0;
+}
+
+.navbar-top-links .dropdown-messages {
+    margin-left: 5px;
+}
+
+.navbar-top-links .dropdown-tasks {
+    margin-left: -59px;
+}
+
+.navbar-top-links .dropdown-alerts {
+    margin-left: -123px;
+}
+
+.navbar-top-links .dropdown-user {
+    right: 0;
+    left: auto;
+}
+
+.sidebar .sidebar-search {
+    padding: 15px;
+}
+
+.sidebar ul li a:hover{
+    background: #C1C1C1;
+}
+
+.sidebar .arrow {
+    float: right;
+}
+
+.sidebar .fa.arrow:before {
+    content: "\f104";
+}
+
+.sidebar .active>a>.fa.arrow:before {
+    content: "\f107";
+}
+
+.sidebar .nav-second-level li,
+.sidebar .nav-third-level li {
+    border-bottom: 0!important;
+}
+
+.sidebar .nav-second-level li a {
+    padding-left: 37px;
+}
+
+.sidebar .nav-third-level li a {
+    padding-left: 52px;
+}
+
+@media(min-width:768px) {
+    .sidebar {
+        z-index: 1;
+        position: absolute;
+        width: 250px;
+        margin-top: 51px;
+    }
+
+    .navbar-top-links .dropdown-messages,
+    .navbar-top-links .dropdown-tasks,
+    .navbar-top-links .dropdown-alerts {
+        margin-left: auto;
+    }
+}
+
+
+/** Admin Dashboard **/
+
+.row_admin_dashboard a{
+    height: 300px;
+    background-color: #EDEFF4;
+    text-decoration: none;
+    border-radius: 5px;
+    border-left: 0.5px solid white;
+    border-right: 0.5px solid white;
+    border-top: 1px solid white;
+    position: relative;
+}
+
+.row_admin_dashboard a>.inner_block {
+    position: absolute;
+    top: 35%;
+    left: 30%;
+}
+
+.row_admin_dashboard>a>.inner_block>ul {
+    list-style-type: none;
+}
+
+.row_admin_dashboard a:hover {
+    color: #EDEFF4;
+    background: #627AAD;
+}
+
+/** Question Bank Tile **/
+
+.tileRow a{
+    min-height: 200px;
+    background-color: #EDEFF4;
+    text-decoration: none;
+    border-radius: 5px;
+    border-left: 0.5px solid white;
+    border-right: 0.5px solid white;
+    border-top: 1px solid white;
+    position: relative;
+}
+
+.tileRow a>.inner_block {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+}
+
+.tileRow a>.inner_block>ul {
+    list-style-type: none;
+}
+
+.tileRow a:hover {
+    color: #EDEFF4;
+    background: #627AAD;
+}
+
+/** Question Bank Dashboard **/
+.row_qstn_bank a{
+    height: 300px;
+    background-color: #EDEFF4;
+    text-decoration: none;
+    border-radius: 5px;
+    border-left: 0.5px solid white;
+    border-right: 0.5px solid white;
+    border-top: 1px solid white;
+    position: relative;
+}
+
+.row_qstn_bank a>.inner_block {
+    position: absolute;
+    top: 35%;
+    left: 30%;
+}
+
+.row_qstn_bank>a>.inner_block>ul {
+    list-style-type: none;
+}
+
+.row_qstn_bank a:hover {
+    color: #EDEFF4;
+    background: #627AAD;
+}
+
+hr#horizontalLineMainDashboard {
+    border: 2px ridge #EDEFF4;
+}
+
+h3.questionView {
+    font-size: 20px;
+    line-height: 100%;
+    color: #627AAD
+}
+
+span.questionViewBadge {
+    height: 20px;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    background: #CFDEFF;
+    color: #125acd;
+    font-weight: lighter
+}
+
+h3.questionView:hover {
+    color: #5f92ff
+}
+
+.row-question-body-view {
+    font-size: 25px;
+}
+.row-question-detail-view {
+    font-size: 20px;
+}
+

@@ -1,0 +1,36 @@
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+'use strict';
+angular.module('papercraft', ['ngRoute'])
+        .config('$routeProvider' , function($routeProvider) {
+            
+            $routeProvider
+    
+    // route for dashboard
+                    .when('/', {
+                        templateUrl: '../app/pages/dashboard.html'
+                    })
+                    
+                    
+                    .when('/course', {
+                        templateUrl: './pages/courses.html',
+                        controller: 'CourseListController'
+                    })
+                    
+                    .when('/programme', {
+                        templateUrl: './pages/programmes.html',
+                        controller: 'ProgrammeListController'
+                    })
+                    
+                    .when('/standard', {
+                        templateUrl: 'pages/programmes.html',
+                        controller: 'StandardListController'
+                    })
+            .otherwise({
+                redirectTo: '/'
+            });
+    
+});

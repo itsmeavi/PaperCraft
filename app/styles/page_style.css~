@@ -1,0 +1,164 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2 Mar, 2016, 10:57:30 PM
+    Author     : Vishal
+*/
+
+h1 {
+	font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
+	font-size: 24px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+}
+h3 {
+	font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 100;
+	line-height: 15.4px;
+}
+p {
+	font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 20px;
+}
+blockquote {
+	font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
+	font-size: 21px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 30px;
+}
+pre {
+	font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
+	font-size: 13px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 18.5714px;
+}
+
+#origami_bird {
+    margin: 10px auto;
+}
+
+.alt-blue {
+    background-color: #d1e4ff;
+}
+
+.alt-sub {
+    background-color: #b1d1ff;
+}
+
+.row-content {
+    min-height: 200px;
+}
+
+
+.row-footer {
+    background-color: #3B5998;
+    color: #C1C1C1;
+}
+.row-footer a {
+    color: #EDEFF4;
+}
+
+body#webapp_body {
+    background-image: url("../logo/origami_bird.jpg");
+}
+
+/* bootstrap classes */
+
+.navbar-inverse {
+    background: #3B5998;
+}
+
+.navbar-inverse .navbar-brand {
+    color : #000000;
+}
+
+.navbar-inverse .navbar-nav li a {
+    color : #C2DAFF;
+}
+
+.navbar-inverse .navbar-nav > .active > a {
+    background: #0069CC;
+    color: #B3DAFF;
+}
+.navbar-inverse .navbar-nav > .active > a:hover {
+    background: #25537F;
+    color: #B3DAFF;
+}
+
+.jumbotron {
+    background: #627AAD;
+    color: #EDEFF4;
+}
+
+.jumbotron .container .row-header p {
+    letter-spacing: 2px;
+}
+
+.container .row-content h2 {
+    font-size: 40pt;
+    color: #00417F;
+}
+
+.container .row-content .sub-row h2 {
+    text-align: center;
+}
+
+.container .row-content .sub-row p {
+    text-align: center;
+}
+
+.container .row-content p {
+    font-size: 15pt;
+    color: #0083FF;
+    line-height: 150%;
+    text-align: center;
+}
+
+.container .row-footer .list-inline li p{
+    color: #B3DAFF;
+    font-size: 15pt;
+}
+
+.media img {
+    height: 100px;
+    width: 100px;
+}
+.media .media-body h3 {
+    margin-top: 2px;
+    font-size: 20pt;
+    font-weight: 400;
+    color: #00417F;
+}
+.media .media-body p {
+    text-align: left;
+} 
+
+.affix {
+    top: 100px;
+}
+
+
+.modal h3 {
+    font-size: 20pt;
+    color: #00417F;
+    text-align: center;
+}
+
+
+
